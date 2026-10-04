@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>KNOX</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="KNOX">
+<meta name="theme-color" content="#07080b">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%; width: 100%;
+    overflow: hidden; overscroll-behavior: none;
+    background: #07080b;
+    -webkit-user-select: none; user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(ellipse at 50% 48%, #0d1117 0%, #07080b 62%);
+  }
+  .stage {
+    position: relative;
+    width: min(62vw, 42vh); height: min(62vw, 42vh);
+    animation: breathe 5.6s ease-in-out infinite;
+    will-change: transform;
+  }
+  .glow {
+    position: absolute; inset: -38%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(140,175,230,0.22) 0%, rgba(110,145,210,0.08) 42%, rgba(0,0,0,0) 70%);
+    animation: glow 5.6s ease-in-out infinite;
+  }
+  .blob {
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 40% 35%, #f2f5fb 0%, #c9d4e6 38%, #8fa3c4 78%, #7389ae 100%);
+    box-shadow: 0 0 60px rgba(150,180,235,0.35), inset -12px -18px 40px rgba(60,80,120,0.35);
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    animation: wobble 17s ease-in-out infinite;
+    filter: blur(1px);
+  }
+  @keyframes breathe {
+    0%, 100% { transform: scale(0.94); }
+    50%      { transform: scale(1.04); }
+  }
+  @keyframes glow {
+    0%, 100% { opacity: 0.65; }
+    50%      { opacity: 1; }
+  }
+  @keyframes wobble {
+    0%, 100% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+    25%      { border-radius: 53% 47% 51% 49% / 48% 53% 47% 52%; }
+    50%      { border-radius: 48% 52% 47% 53% / 52% 47% 53% 48%; }
+    75%      { border-radius: 51% 49% 53% 47% / 49% 51% 49% 51%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .stage, .glow, .blob { animation-duration: 12s; }
+  }
+</style>
+</head>
+<body>
+  <div class="stage" aria-label="KNOX">
+    <div class="glow"></div>
+    <div class="blob"></div>
+  </div>
+</body>
+</html>
